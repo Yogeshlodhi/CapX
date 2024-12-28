@@ -2,7 +2,7 @@ import React from 'react'
 
 const Metrics = () => {
   return (
-    <div className='flex justify-around'>
+    <div className='flex justify-around text-white uppercase'>
       <div className='flex flex-col gap-4 justify-center w-[40%] p-4'>
         <h2>Current Total Value : ₹23000</h2>
 

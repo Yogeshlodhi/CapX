@@ -12,46 +12,42 @@ import { useEffect, useState } from "react";
 export default function Home() {
     const [selected, setSelected] = useState(true);
     const [transactionType, setTransactionType] = useState(true);
+    const [selectedStock, setSelectedStock] = useState({});
 
     const onSelect = () => {
         setSelected(!selected);
     }
 
-    useEffect(() => {
-        console.log('Transaction Type Changed:', transactionType ? 'Buy' : 'Sell');
-      }, [transactionType]);
 
     return (
-        <div className="p-8 px-20 flex justify-between items-center space-x-4">
-            <div className="bg-slate-600 shadow-md rounded-md w-[70%] p-4">
+        <div className="p-8 px-20 flex justify-between space-x-4">
+            <div className="bg-[#2f2f33] shadow-md rounded-md w-[75%] p-4">
                 <div className="w-[80%] pb-6"><StocksToAdd /></div>
                 <div className="h-auto">
                     <Metrics />
                     <StockTable />
                 </div>
             </div>
-            <div className={`w-[30%] bg-white h-auto border-gray-300 rounded-lg p-4 ${selected ? '' : 'hidden'}`}>
+            <div className={`w-[25%] bg-white h-[25rem] border-gray-300 rounded-lg p-4 ${selected ? '' : 'hidden'} items-start justify-start`}>
                 {/* Header Section */}
                 <div className="flex justify-between items-center">
                     <div>
-                        <h1>Name of Stock</h1>
+                        <h1>Name of Stock | Ticker</h1>
                         <p>Market Price</p>
                     </div>
-                    <Button size="sm" onClick={onSelect}>
-                        <X />
-                    </Button>
+                    <Button size="sm" onClick={onSelect}><X className="text-orange-500"/></Button>
                 </div>
 
                 {/* Options Section */}
                 <div className="flex justify-center my-4">
                     <div
-                        className={`border-r-black border-r-2 p-1 w-[4rem] ${transactionType == true ? 'bg-green-500' : 'bg-white'} text-center cursor-pointer`}
+                        className={`border-r-black border-r-2 p-1 w-[4rem] ${transactionType == true ? 'bg-green-500' : 'bg-white'} text-center cursor-pointer ${transactionType == true ? 'text-white' : 'text-orange-500'}`}
                         onClick={() => setTransactionType(true)}
                     >
                         Buy
                     </div>
                     <div
-                        className={`p-1 w-[4rem] ${transactionType == false ? 'bg-red-500': 'bg-white'} text-center cursor-pointer`}
+                        className={`p-1 w-[4rem] ${transactionType == false ? 'bg-red-500': 'bg-white'} text-center cursor-pointer ${transactionType == false ? 'text-white' : 'text-orange-500'}`}
                         onClick={() => setTransactionType(false)}
                     >
                         Sell
@@ -74,7 +70,7 @@ export default function Home() {
                 </div>
                 
                 {/* Submit Button */}
-                <Button className={`w-full ${transactionType == true ? 'bg-green-500': 'bg-red-500'}`}>
+                <Button className={`w-full ${transactionType == true ? 'bg-green-500': 'bg-red-500'} ${transactionType == true ? 'hover:bg-green-600': 'hover:bg-red-600'}`}>
                     {transactionType === true ? 'Buy' : 'Sell'}
                 </Button>
             </div>

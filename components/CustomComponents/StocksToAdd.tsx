@@ -10,18 +10,18 @@ import { Input } from '../ui/input';
 const StocksToAdd = () => {
   return (
     <div className='flex flex-col gap-4'>
-      <h1 className='text-gray-300'>Stocks you might wanna add ....</h1>
-      <div className='flex items-center justify-between'>
+      <h1 className='text-orange-500 uppercase text-[2rem]'>Stocks you might wanna add ....</h1>
+      <div className='flex items-center justify-around gap-[2rem]'>
         {stocks.map((stock) => (
           <Dialog key={stock.id}>
             <DialogTrigger asChild>
-              <Button>{stock.name}</Button>
+              <Button className='text-[#ed8e36] text-lg'>{stock.name}</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>Buy</DialogTitle>
               </DialogHeader>
-              <div className="grid gap-4 py-4">
+              <div className="grid gap-4 py-4 ">
                 <div>Market Price : ₹430</div>
                 <div className="grid grid-cols-4 items-center gap-4">
                   Quantity : 
